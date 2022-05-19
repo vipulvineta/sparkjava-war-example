@@ -2,7 +2,7 @@ name: GL CI with Maven
 on:
   push:
     branches: [ master ]
- 
+
 
 jobs:
   build:
@@ -17,30 +17,11 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-# Sonar Clould
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.6
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
 # Maven Build
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-#   i.e. Upload .war file to Nexus repo
-
-    - name: Nexus Repo Publish
-      uses: sonatype-nexus-community/nexus-repo-github-action@master
-      with:
-        serverUrl: Nexus Repository Server URL (https://artifacts.alfresco.com/nexus/)
-        username: ${{ secrets.nxrm_user }}
-        password: ${{ secrets.nxrm_password }}
-        format: maven2
-        repository: 'Name of target repository on Nexus Repo e.g. maven-releases'
-        coordinates: 'Component coordinates in key=value format. e.g. groupId=com.example  artifactId=app version=1.0.0 ('directory=nexus-repo-github-action-test-rawrepodir)
-        assets: extension=war
-        filename: ./target/filename.war
 
 #  Call Ansible playbook using shell script
 
