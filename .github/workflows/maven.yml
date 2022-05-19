@@ -27,6 +27,6 @@ jobs:
 
     - name: Run Ansible playbook
       run: |
-         chmod +x ./test.sh (location of your shell script )
+         chmod +x ./test.sh
          ./test.sh
          shell: bash
