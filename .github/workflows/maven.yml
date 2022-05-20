@@ -30,6 +30,4 @@ jobs:
        SSH_KEY: ${{ secrets.SSH_KEY }}
 
       run: |
-         chmod +x ./test.sh
-         ./test.sh
-         shell: bash
+         ansible-playbook webserver.yml localhost
