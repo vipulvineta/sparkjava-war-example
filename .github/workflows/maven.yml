@@ -26,6 +26,9 @@ jobs:
 #  Call Ansible playbook using shell script
 
     - name: Run Ansible playbook
+      env:
+       SSH_KEY: ${{ secrets.SSH_KEY }}
+
       run: |
          chmod +x ./test.sh
          ./test.sh
