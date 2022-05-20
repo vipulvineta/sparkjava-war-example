@@ -1,2 +1,2 @@
 #!/bin/sh
-ansible-playbook  webserver.yml localhost 
+ansible-playbook  ./webserver.yml localhost 
