@@ -33,7 +33,9 @@ jobs:
 #         ansible-playbook  ${GITHUB_WORKSPACE}/webserver.yml localhost
 
     - name: Run playbook
- #     uses: dawidd6/action-ansible-playbook@v2
+      env:
+       SSH_KEY: ${{ secrets.SSH_KEY }}
+      uses: vipulvineta/sparkjava-war-example@master
       with:
         # Required, playbook filepath
         playbook: webserver.yml
