@@ -30,4 +30,4 @@ jobs:
        SSH_KEY: ${{ secrets.SSH_KEY }}
 
       run: |
-         ansible-playbook webserver.yml localhost
+         ansible-playbook  ${GITHUB_WORKSPACE}/webserver.yml localhost
