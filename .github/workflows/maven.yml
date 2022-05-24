@@ -25,9 +25,21 @@ jobs:
 
 #  Call Ansible playbook using shell script
 
-    - name: Run Ansible playbook
+#    - name: Run Ansible playbook
+#      env:
+#       SSH_KEY: ${{ secrets.SSH_KEY }}
+
+#      run: |
+#         ansible-playbook  ${GITHUB_WORKSPACE}/webserver.yml localhost
+
+    - name: Run playbook
       env:
        SSH_KEY: ${{ secrets.SSH_KEY }}
-
-      run: |
-         ansible-playbook webserver.yml localhost
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+        # Required, playbook filepath
+        playbook: webserver.yml
+        # Optional, directory where playbooks live
+        directory: ./
+        # Optional, SSH private key
+        key: ${{ secrets.SSH_KEY }}
